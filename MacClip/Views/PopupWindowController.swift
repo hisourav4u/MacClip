@@ -37,7 +37,7 @@ final class PopupWindowController: NSObject, NSWindowDelegate {
     }
 
     // Run a no-op AppleScript while our app is frontmost so macOS shows the
-    // "ClipboardManager wants to control System Events" dialog in context.
+    // "MacClip wants to control System Events" dialog in context.
     // After the user clicks OK once, this becomes a fast no-op on every open.
     private func probeAutomationPermission() {
         DispatchQueue.main.async {

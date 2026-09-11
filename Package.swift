@@ -2,15 +2,15 @@
 import PackageDescription
 
 let package = Package(
-    name: "ClipboardManager",
+    name: "MacClip",
     platforms: [.macOS(.v14)],
     targets: [
         .executableTarget(
-            name: "ClipboardManager",
-            path: "ClipboardManager",
+            name: "MacClip",
+            path: "MacClip",
             exclude: [
                 "Info.plist",
-                "ClipboardManager.entitlements",
+                "MacClip.entitlements",
                 "Resources",
             ],
             linkerSettings: [

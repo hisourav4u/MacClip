@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E792BBEFB1D81F49C3DAD71A"
-               BuildableName = "ClipboardManager.app"
-               BlueprintName = "ClipboardManager"
-               ReferencedContainer = "container:ClipboardManager.xcodeproj">
+               BlueprintIdentifier = "1D3EA4355F9F2AEE24181CDE"
+               BuildableName = "MacClip.app"
+               BlueprintName = "MacClip"
+               ReferencedContainer = "container:MacClip.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E792BBEFB1D81F49C3DAD71A"
-            BuildableName = "ClipboardManager.app"
-            BlueprintName = "ClipboardManager"
-            ReferencedContainer = "container:ClipboardManager.xcodeproj">
+            BlueprintIdentifier = "1D3EA4355F9F2AEE24181CDE"
+            BuildableName = "MacClip.app"
+            BlueprintName = "MacClip"
+            ReferencedContainer = "container:MacClip.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E792BBEFB1D81F49C3DAD71A"
-            BuildableName = "ClipboardManager.app"
-            BlueprintName = "ClipboardManager"
-            ReferencedContainer = "container:ClipboardManager.xcodeproj">
+            BlueprintIdentifier = "1D3EA4355F9F2AEE24181CDE"
+            BuildableName = "MacClip.app"
+            BlueprintName = "MacClip"
+            ReferencedContainer = "container:MacClip.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E792BBEFB1D81F49C3DAD71A"
-            BuildableName = "ClipboardManager.app"
-            BlueprintName = "ClipboardManager"
-            ReferencedContainer = "container:ClipboardManager.xcodeproj">
+            BlueprintIdentifier = "1D3EA4355F9F2AEE24181CDE"
+            BuildableName = "MacClip.app"
+            BlueprintName = "MacClip"
+            ReferencedContainer = "container:MacClip.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

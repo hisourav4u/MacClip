@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct ClipboardManagerApp: App {
+struct MacClipApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @ObservedObject private var storage = ClipboardStorage.shared
 

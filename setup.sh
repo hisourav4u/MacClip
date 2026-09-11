@@ -4,7 +4,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
-echo "==> ClipboardManager setup"
+echo "==> MacClip setup"
 
 # 1. Ensure Homebrew is available
 if ! command -v brew &>/dev/null; then
@@ -21,12 +21,12 @@ fi
 echo "--> xcodegen $(xcodegen --version)"
 
 # 3. Generate the Xcode project
-echo "--> Generating ClipboardManager.xcodeproj ..."
+echo "--> Generating MacClip.xcodeproj ..."
 xcodegen generate --spec project.yml
 
 echo ""
 echo "Done!  Open the project with:"
-echo "  open ClipboardManager.xcodeproj"
+echo "  open MacClip.xcodeproj"
 echo ""
 echo "First-time checklist:"
 echo "  1. In Xcode → Signing & Capabilities, set your Team (for code signing)."

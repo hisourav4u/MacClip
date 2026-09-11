@@ -27,10 +27,10 @@
 	<string>Copyright © 2025. All rights reserved.</string>
 	<!-- Accessibility — needed for CGEvent-based paste simulation -->
 	<key>NSAccessibilityUsageDescription</key>
-	<string>ClipboardManager requires Accessibility access to automatically paste selected clipboard entries into other apps.</string>
+	<string>MacClip requires Accessibility access to automatically paste selected clipboard entries into other apps.</string>
 	<!-- AppleScript / System Events fallback for paste -->
 	<key>NSAppleEventsUsageDescription</key>
-	<string>ClipboardManager uses System Events to paste clipboard content when Accessibility access is unavailable.</string>
+	<string>MacClip uses System Events to paste clipboard content when Accessibility access is unavailable.</string>
 	<!-- Minimum macOS version -->
 	<key>LSMinimumSystemVersion</key>
 	<string>14.0</string>
