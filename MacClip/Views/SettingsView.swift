@@ -41,7 +41,7 @@ struct SettingsView: View {
                 VStack(alignment: .leading, spacing: 6) {
                     Text("Auto-paste uses AppleScript to send ⌘V after you select an entry.")
                         .font(.callout)
-                    Text("The first time you paste, macOS will ask: ClipboardManager wants to control System Events. Click OK -- that one-time grant persists across restarts.")
+                    Text("The first time you paste, macOS will ask: MacClip wants to control System Events. Click OK -- that one-time grant persists across restarts.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }

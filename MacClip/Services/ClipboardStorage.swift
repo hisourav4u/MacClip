@@ -20,7 +20,13 @@ final class ClipboardStorage: ObservableObject {
 
     private lazy var storageDir: URL = {
         let base = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
-        let dir = base.appendingPathComponent("ClipboardManager", isDirectory: true)
+        let dir = base.appendingPathComponent("MacClip", isDirectory: true)
+        // Migrate history from the app's pre-rename storage directory.
+        let legacy = base.appendingPathComponent("ClipboardManager", isDirectory: true)
+        if FileManager.default.fileExists(atPath: legacy.path),
+           !FileManager.default.fileExists(atPath: dir.path) {
+            try? FileManager.default.moveItem(at: legacy, to: dir)
+        }
         try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
         return dir
     }()

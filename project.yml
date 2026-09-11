@@ -1,4 +1,4 @@
-name: ClipboardManager
+name: MacClip
 
 options:
   deploymentTarget:
@@ -28,19 +28,19 @@ settings:
       ONLY_ACTIVE_ARCH: NO
 
 targets:
-  ClipboardManager:
+  MacClip:
     type: application
     platform: macOS
 
     sources:
-      - path: ClipboardManager
+      - path: MacClip
         excludes:
           - "**/*.entitlements"
           - "**/*.plist"
         createIntermediateGroups: true
 
     resources:
-      - path: ClipboardManager/Resources/Assets.xcassets
+      - path: MacClip/Resources/Assets.xcassets
 
     dependencies:
       - sdk: Carbon.framework
@@ -48,17 +48,17 @@ targets:
 
     settings:
       base:
-        PRODUCT_NAME: ClipboardManager
+        PRODUCT_NAME: MacClip
         PRODUCT_BUNDLE_IDENTIFIER: com.clipboardmanager.app
-        INFOPLIST_FILE: ClipboardManager/Info.plist
-        CODE_SIGN_ENTITLEMENTS: ClipboardManager/ClipboardManager.entitlements
+        INFOPLIST_FILE: MacClip/Info.plist
+        CODE_SIGN_ENTITLEMENTS: MacClip/MacClip.entitlements
         FRAMEWORK_SEARCH_PATHS: "$(inherited)"
 
 schemes:
-  ClipboardManager:
+  MacClip:
     build:
       targets:
-        ClipboardManager: all
+        MacClip: all
     run:
       config: Debug
     archive:

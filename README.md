@@ -1,4 +1,4 @@
-# ClipboardManager
+# MacClip
 
 A native macOS clipboard history manager — the macOS equivalent of Windows clipboard history (Win+V).
 
@@ -31,13 +31,13 @@ A native macOS clipboard history manager — the macOS equivalent of Windows cli
 ## Setup
 
 ```bash
-cd ClipboardManager
+cd MacClip
 ./setup.sh
-open ClipboardManager.xcodeproj
+open MacClip.xcodeproj
 ```
 
 In Xcode:
-1. Select the **ClipboardManager** target → **Signing & Capabilities** → set your **Team**.
+1. Select the **MacClip** target → **Signing & Capabilities** → set your **Team**.
 2. Press **⌘R** to build and run.
 
 ---
@@ -79,9 +79,9 @@ If Accessibility is not granted, the app sends keystrokes via `System Events`. m
 ## Architecture
 
 ```
-ClipboardManager/
+MacClip/
 ├── App/
-│   ├── ClipboardManagerApp.swift   — @main SwiftUI App + MenuBarExtra
+│   ├── MacClipApp.swift   — @main SwiftUI App + MenuBarExtra
 │   └── AppDelegate.swift           — lifecycle, wires all services together
 ├── Models/
 │   └── ClipboardEntry.swift        — SwiftData @Model (text, image, type, pin, timestamp)
@@ -126,15 +126,15 @@ Exposed via **Settings…** in the menu bar.
 
 ```bash
 xcodebuild \
-  -project ClipboardManager.xcodeproj \
-  -scheme ClipboardManager \
+  -project MacClip.xcodeproj \
+  -scheme MacClip \
   -configuration Release \
-  -archivePath build/ClipboardManager.xcarchive \
+  -archivePath build/MacClip.xcarchive \
   archive
 
 xcodebuild \
   -exportArchive \
-  -archivePath build/ClipboardManager.xcarchive \
+  -archivePath build/MacClip.xcarchive \
   -exportOptionsPlist ExportOptions.plist \
   -exportPath build/
 ```
@@ -145,6 +145,6 @@ For notarisation, add your Apple ID credentials and run `xcrun notarytool`.
 
 ## Privacy
 
-- ClipboardManager never uploads clipboard data anywhere.
-- All history is stored locally in the app's SwiftData store (`~/Library/Application Support/ClipboardManager/`).
+- MacClip never uploads clipboard data anywhere.
+- All history is stored locally in the app's SwiftData store (`~/Library/Application Support/MacClip/`).
 - The app only reads the system clipboard — it cannot inject content into other apps without your explicit action.
