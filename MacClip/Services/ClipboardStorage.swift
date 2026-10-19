@@ -40,10 +40,13 @@ final class ClipboardStorage: ObservableObject {
     // MARK: - Persistence
 
     func load() {
-        guard let data = try? Data(contentsOf: indexURL),
-              let loaded = try? JSONDecoder().decode([ClipboardEntry].self, from: data)
-        else { return }
-        entries = loaded
+        if let data = try? Data(contentsOf: indexURL),
+           let loaded = try? JSONDecoder().decode([ClipboardEntry].self, from: data) {
+            entries = loaded
+        }
+        // Remove any orphaned image sidecars left behind by older builds or by
+        // rejected duplicates, so they don't accumulate on disk indefinitely.
+        cleanupOrphans()
     }
 
     private func persist() {
@@ -67,13 +70,36 @@ final class ClipboardStorage: ObservableObject {
         try? FileManager.default.removeItem(at: imageURL(for: id))
     }
 
+    /// Deletes any `*.imgdata` sidecar whose id is not referenced by a current
+    /// image entry. Guards against the leak where a sidecar is written before
+    /// `add(_:)` rejects the entry as a duplicate, and cleans up files left by
+    /// older builds that did not delete sidecars on rejection.
+    private func cleanupOrphans() {
+        let referenced = Set(entries.filter { $0.hasImage }.map { $0.id.uuidString })
+        guard let files = try? FileManager.default.contentsOfDirectory(
+            at: storageDir, includingPropertiesForKeys: nil) else { return }
+        for url in files where url.pathExtension == "imgdata" {
+            let id = url.deletingPathExtension().lastPathComponent
+            if !referenced.contains(id) {
+                try? FileManager.default.removeItem(at: url)
+            }
+        }
+    }
+
     // MARK: - Mutations
 
     func add(_ entry: ClipboardEntry) {
         // Deduplicate against the most recent unpinned entry
         if let recent = entries.first(where: { !$0.isPinned }) ?? entries.first {
             if recent.textContent == entry.textContent && entry.textContent != nil { return }
-            if recent.hasImage && entry.hasImage { return } // same image checked by caller
+            if recent.hasImage && entry.hasImage {
+                // The caller (ClipboardMonitor) has already written this entry's
+                // image sidecar to disk. Since we're rejecting it as a duplicate,
+                // delete the sidecar too — otherwise it leaks as an orphaned
+                // .imgdata file (TIFF, ~20-30 MB) that nothing references.
+                deleteImage(for: entry.id)
+                return
+            }
         }
 
         var mutable = entries
